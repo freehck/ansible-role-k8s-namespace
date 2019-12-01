@@ -1,0 +1,19 @@
+galaxy_info:
+  author: Dmitrii Kashin
+  description: manage kubernetes namespaces
+  license: MIT
+  role_name: k8s_namespace
+
+  min_ansible_version: 2.0
+
+  platforms:
+  - name: Ubuntu
+    versions:
+      - bionic
+
+  galaxy_tags:
+    - kubernetes
+    - k8s
+    - namespace
+
+dependencies: []

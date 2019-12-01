@@ -1,0 +1,19 @@
+---
+
+- name: check if a namespace called {{ k8s_namespace_name }} exists
+  shell: kubectl get namespace {{ k8s_namespace_name }}
+  ignore_errors: yes
+  register: k8s_namespace_check
+  changed_when: false
+
+- name: create namespace {{ k8s_namespace_name }}
+  shell: kubectl create namespace {{ k8s_namespace_name }}
+  when:
+    - k8s_namespace_check is failed
+    - k8s_namespace_state == 'present'
+
+- name: delete namespace {{ k8s_namespace_name }}
+  shell: kubectl delete namespace {{ k8s_namespace_name }}
+  when:
+    - k8s_namespace_check is succeeded
+    - k8s_namespace_state == 'absent'

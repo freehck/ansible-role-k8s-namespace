@@ -1,0 +1,3 @@
+---
+# k8s_namespace_name: ""
+k8s_namespace_state: "present"
